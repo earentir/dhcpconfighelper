@@ -1,0 +1,586 @@
+object dhcpconfigform: Tdhcpconfigform
+  Left = 181
+  Height = 600
+  Top = 250
+  Width = 800
+  BorderStyle = bsDialog
+  Caption = 'dhcpd config helper'
+  ClientHeight = 600
+  ClientWidth = 800
+  OnCreate = FormCreate
+  object Panel1: TPanel
+    Left = 0
+    Height = 25
+    Top = 0
+    Width = 800
+    Align = alTop
+    BevelOuter = bvNone
+    TabOrder = 0
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 552
+    Top = 25
+    Width = 800
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 552
+    ClientWidth = 800
+    TabOrder = 1
+    object PageControl1: TPageControl
+      Left = 0
+      Height = 552
+      Top = 0
+      Width = 800
+      ActivePage = TabSheet1
+      Align = alClient
+      TabIndex = 0
+      TabOrder = 0
+      object TabSheet1: TTabSheet
+        Caption = 'Defaults'
+        ClientHeight = 524
+        ClientWidth = 792
+        object LabeledEdit1: TLabeledEdit
+          Left = 8
+          Height = 23
+          Top = 32
+          Width = 120
+          EditLabel.Height = 15
+          EditLabel.Width = 120
+          EditLabel.Caption = 'default-lease-time'
+          EditLabel.ParentColor = False
+          TabOrder = 0
+          Text = '600'
+        end
+        object LabeledEdit2: TLabeledEdit
+          Left = 8
+          Height = 23
+          Top = 88
+          Width = 120
+          EditLabel.Height = 15
+          EditLabel.Width = 120
+          EditLabel.Caption = 'max-lease-time'
+          EditLabel.ParentColor = False
+          TabOrder = 1
+          Text = '7200'
+        end
+      end
+      object TabSheet2: TTabSheet
+        Caption = 'Subnets'
+        ClientHeight = 524
+        ClientWidth = 792
+        object Panel3: TPanel
+          Left = 0
+          Height = 150
+          Top = 374
+          Width = 792
+          Align = alBottom
+          BevelOuter = bvSpace
+          ClientHeight = 150
+          ClientWidth = 792
+          TabOrder = 0
+          object subnet_grid: TStringGrid
+            Left = 1
+            Height = 133
+            Top = 16
+            Width = 790
+            Align = alClient
+            AutoFillColumns = True
+            BorderStyle = bsNone
+            ColCount = 13
+            Columns = <            
+              item
+                Title.Caption = 'comment'
+                Visible = False
+              end            
+              item
+                Title.Caption = 'subnet'
+                Width = 158
+              end            
+              item
+                Title.Caption = 'netmask'
+                Width = 158
+              end            
+              item
+                Title.Caption = 'broadcast-address'
+                Visible = False
+              end            
+              item
+                Title.Caption = 'default-lease-time'
+                Visible = False
+              end            
+              item
+                Title.Caption = 'max-lease-time'
+                Visible = False
+              end            
+              item
+                Title.Caption = 'range-from'
+                Width = 158
+              end            
+              item
+                Title.Caption = 'range-to'
+                Width = 158
+              end            
+              item
+                Title.Caption = 'range-dynamic-bootpa'
+                Visible = False
+              end            
+              item
+                Title.Caption = 'range-dynamic-bootpb'
+                Visible = False
+              end            
+              item
+                MinSize = 220
+                MaxSize = 220
+                Title.Caption = 'domain-name'
+                Width = 158
+              end            
+              item
+                Title.Caption = 'domain-name-servers'
+                Width = 0
+                Visible = False
+              end            
+              item
+                Title.Caption = 'routers'
+                Visible = False
+              end>
+            DefaultColWidth = 100
+            FixedCols = 0
+            Options = [goFixedVertLine, goFixedHorzLine, goHorzLine, goColSizing, goRowSelect, goSmoothScroll]
+            RowCount = 1
+            TabOrder = 0
+            TitleStyle = tsNative
+            OnClick = subnet_gridClick
+            OnColRowInserted = subnet_gridColRowInserted
+            ColWidths = (
+              0
+              158
+              158
+              0
+              0
+              0
+              158
+              158
+              0
+              0
+              158
+              0
+              0
+            )
+          end
+          object Label1: TLabel
+            Left = 1
+            Height = 15
+            Top = 1
+            Width = 790
+            Align = alTop
+            Caption = 'Ranges'
+            ParentColor = False
+          end
+        end
+        object Panel4: TPanel
+          Left = 0
+          Height = 374
+          Top = 0
+          Width = 792
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 374
+          ClientWidth = 792
+          TabOrder = 1
+          object subnet_subnet_edit: TLabeledEdit
+            Left = 8
+            Height = 23
+            Top = 72
+            Width = 125
+            EditLabel.Height = 15
+            EditLabel.Width = 125
+            EditLabel.Caption = 'subnet'
+            EditLabel.ParentColor = False
+            TabOrder = 1
+          end
+          object subnet_netmask_edit: TLabeledEdit
+            Left = 144
+            Height = 23
+            Top = 72
+            Width = 125
+            EditLabel.Height = 15
+            EditLabel.Width = 125
+            EditLabel.Caption = 'netmask'
+            EditLabel.ParentColor = False
+            TabOrder = 2
+          end
+          object subnet_rangea_edit: TLabeledEdit
+            Left = 8
+            Height = 23
+            Top = 120
+            Width = 125
+            EditLabel.Height = 15
+            EditLabel.Width = 125
+            EditLabel.Caption = 'range'
+            EditLabel.ParentColor = False
+            TabOrder = 6
+          end
+          object subnet_rangeb_edit: TEdit
+            Left = 144
+            Height = 23
+            Top = 120
+            Width = 125
+            TabOrder = 7
+          end
+          object subnet_addupdate_button: TButton
+            Left = 670
+            Height = 25
+            Top = 171
+            Width = 116
+            Caption = 'Add/Update'
+            OnClick = subnet_addupdate_buttonClick
+            TabOrder = 11
+          end
+          object subnet_range_bootpa_edit: TLabeledEdit
+            Left = 280
+            Height = 23
+            Top = 120
+            Width = 125
+            EditLabel.Height = 15
+            EditLabel.Width = 125
+            EditLabel.Caption = 'range-dynamic-bootp'
+            EditLabel.ParentColor = False
+            TabOrder = 8
+          end
+          object subnet_range_bootpb_edit: TEdit
+            Left = 432
+            Height = 23
+            Top = 120
+            Width = 125
+            TabOrder = 9
+          end
+          object subnet_domainname_edit: TLabeledEdit
+            Left = 8
+            Height = 23
+            Top = 171
+            Width = 549
+            EditLabel.Height = 15
+            EditLabel.Width = 549
+            EditLabel.Caption = 'domain-name'
+            EditLabel.ParentColor = False
+            TabOrder = 10
+          end
+          object subnet_broadcast_edit: TLabeledEdit
+            Left = 280
+            Height = 23
+            Top = 72
+            Width = 125
+            EditLabel.Height = 15
+            EditLabel.Width = 125
+            EditLabel.Caption = 'broadcast-address'
+            EditLabel.ParentColor = False
+            TabOrder = 3
+          end
+          object subnet_defaultleasetime_edit: TLabeledEdit
+            Left = 432
+            Height = 23
+            Top = 72
+            Width = 125
+            EditLabel.Height = 15
+            EditLabel.Width = 125
+            EditLabel.Caption = 'default-lease-time'
+            EditLabel.ParentColor = False
+            TabOrder = 4
+          end
+          object subnet_maxleasetime_edit: TLabeledEdit
+            Left = 568
+            Height = 23
+            Top = 72
+            Width = 125
+            EditLabel.Height = 15
+            EditLabel.Width = 125
+            EditLabel.Caption = 'max-lease-time'
+            EditLabel.ParentColor = False
+            TabOrder = 5
+          end
+          object PageControl2: TPageControl
+            Left = 0
+            Height = 160
+            Top = 214
+            Width = 792
+            ActivePage = TabSheet4
+            Align = alBottom
+            TabIndex = 0
+            TabOrder = 12
+            object TabSheet4: TTabSheet
+              Caption = 'domain-name-servers'
+              ClientHeight = 132
+              ClientWidth = 784
+              object subnet_domainnameservers_grid: TStringGrid
+                Left = 0
+                Height = 94
+                Top = 38
+                Width = 784
+                Align = alClient
+                BorderStyle = bsNone
+                ColCount = 1
+                Columns = <                
+                  item
+                    Title.Caption = 'domain-name-servers'
+                    Width = 250
+                  end>
+                DefaultColWidth = 100
+                FixedCols = 0
+                Options = [goFixedVertLine, goFixedHorzLine, goHorzLine, goRangeSelect, goRowSelect, goSmoothScroll]
+                RowCount = 1
+                TabOrder = 0
+                TitleStyle = tsNative
+                OnClick = subnet_domainnameservers_gridClick
+                OnKeyDown = subnet_domainnameservers_gridKeyDown
+              end
+              object Label2: TLabel
+                Left = 0
+                Height = 15
+                Top = 0
+                Width = 784
+                Align = alTop
+                Caption = 'domain-name-servers'
+                ParentColor = False
+              end
+              object subnet_domainnameservers_edit: TEdit
+                Left = 0
+                Height = 23
+                Top = 15
+                Width = 784
+                Align = alTop
+                OnKeyDown = subnet_domainnameservers_editKeyDown
+                TabOrder = 1
+              end
+            end
+            object TabSheet5: TTabSheet
+              Caption = 'routers'
+              ClientHeight = 132
+              ClientWidth = 784
+              object subnet_routers_grid: TStringGrid
+                Left = 0
+                Height = 94
+                Top = 38
+                Width = 784
+                Align = alClient
+                BorderStyle = bsNone
+                ColCount = 1
+                Columns = <                
+                  item
+                    Title.Caption = 'routers'
+                    Width = 250
+                  end>
+                DefaultColWidth = 100
+                FixedCols = 0
+                Options = [goFixedVertLine, goFixedHorzLine, goHorzLine, goRangeSelect, goRowSelect, goSmoothScroll]
+                RowCount = 1
+                TabOrder = 0
+                TitleStyle = tsNative
+                OnClick = subnet_routers_gridClick
+                OnKeyDown = subnet_routers_gridKeyDown
+              end
+              object Label3: TLabel
+                Left = 0
+                Height = 15
+                Top = 0
+                Width = 784
+                Align = alTop
+                Caption = 'routers'
+                ParentColor = False
+              end
+              object subnet_routers_edit: TEdit
+                Left = 0
+                Height = 23
+                Top = 15
+                Width = 784
+                Align = alTop
+                OnKeyDown = subnet_routers_editKeyDown
+                TabOrder = 1
+              end
+            end
+          end
+          object subnet_comment_edit: TLabeledEdit
+            Left = 8
+            Height = 23
+            Top = 24
+            Width = 685
+            EditLabel.Height = 15
+            EditLabel.Width = 685
+            EditLabel.Caption = 'comment'
+            EditLabel.ParentColor = False
+            TabOrder = 0
+          end
+        end
+      end
+      object TabSheet3: TTabSheet
+        Caption = 'Hosts'
+        ClientHeight = 524
+        ClientWidth = 792
+        object subnetlist_combobox: TComboBox
+          Left = 0
+          Height = 23
+          Top = 0
+          Width = 792
+          Align = alTop
+          ItemHeight = 15
+          ReadOnly = True
+          Sorted = True
+          Style = csDropDownList
+          TabOrder = 0
+        end
+        object Panel5: TPanel
+          Left = 0
+          Height = 501
+          Top = 23
+          Width = 792
+          Align = alClient
+          ClientHeight = 501
+          ClientWidth = 792
+          TabOrder = 1
+          object host_comment_edit: TLabeledEdit
+            Left = 8
+            Height = 23
+            Top = 24
+            Width = 685
+            EditLabel.Height = 15
+            EditLabel.Width = 685
+            EditLabel.Caption = 'comment'
+            EditLabel.ParentColor = False
+            TabOrder = 0
+          end
+          object host_hardware_edit: TLabeledEdit
+            Left = 216
+            Height = 23
+            Top = 80
+            Width = 140
+            EditLabel.Height = 15
+            EditLabel.Width = 140
+            EditLabel.Caption = 'hardware ethernet'
+            EditLabel.ParentColor = False
+            TabOrder = 1
+            Text = 'FF:FF:FF:FF:FF:FF'
+          end
+          object host_fixedaddress_edit: TLabeledEdit
+            Left = 366
+            Height = 23
+            Top = 80
+            Width = 140
+            EditLabel.Height = 15
+            EditLabel.Width = 140
+            EditLabel.Caption = 'fixed-address'
+            EditLabel.ParentColor = False
+            TabOrder = 2
+            Text = '255.255.255.255'
+          end
+          object host_mac_edit1: TLabeledEdit
+            Left = 8
+            Height = 23
+            Top = 80
+            Width = 200
+            EditLabel.Height = 15
+            EditLabel.Width = 200
+            EditLabel.Caption = 'host name'
+            EditLabel.ParentColor = False
+            TabOrder = 3
+          end
+          object host_filename_edit: TLabeledEdit
+            Left = 8
+            Height = 23
+            Top = 136
+            Width = 312
+            EditLabel.Height = 15
+            EditLabel.Width = 312
+            EditLabel.Caption = 'filename'
+            EditLabel.ParentColor = False
+            TabOrder = 4
+          end
+          object host_servername_edit: TLabeledEdit
+            Left = 336
+            Height = 23
+            Top = 136
+            Width = 312
+            EditLabel.Height = 15
+            EditLabel.Width = 312
+            EditLabel.Caption = 'server-name'
+            EditLabel.ParentColor = False
+            TabOrder = 5
+          end
+          object Panel6: TPanel
+            Left = 1
+            Height = 300
+            Top = 200
+            Width = 790
+            Align = alBottom
+            ClientHeight = 300
+            ClientWidth = 790
+            TabOrder = 6
+            object host_grid: TStringGrid
+              Left = 1
+              Height = 298
+              Top = 1
+              Width = 788
+              Align = alClient
+              AutoFillColumns = True
+              BorderStyle = bsNone
+              ColCount = 6
+              Columns = <              
+                item
+                  Title.Caption = 'comment'
+                  Visible = False
+                end              
+                item
+                  Title.Caption = 'hostname'
+                  Width = 157
+                end              
+                item
+                  Title.Caption = 'hardware'
+                  Width = 157
+                end              
+                item
+                  Title.Caption = 'fixed-address'
+                  Width = 157
+                end              
+                item
+                  Title.Caption = 'filename'
+                  Width = 157
+                end              
+                item
+                  Title.Caption = 'server-name'
+                  Width = 160
+                end>
+              DefaultColWidth = 100
+              FixedCols = 0
+              Options = [goFixedVertLine, goFixedHorzLine, goHorzLine, goColSizing, goRowSelect, goSmoothScroll]
+              RowCount = 1
+              TabOrder = 0
+              TitleStyle = tsNative
+              ColWidths = (
+                0
+                157
+                157
+                157
+                157
+                160
+              )
+            end
+          end
+          object subnet_addupdate_button1: TButton
+            Left = 670
+            Height = 25
+            Top = 148
+            Width = 116
+            Caption = 'Add/Update'
+            TabOrder = 7
+          end
+        end
+      end
+    end
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 577
+    Width = 800
+    Panels = <>
+  end
+end
