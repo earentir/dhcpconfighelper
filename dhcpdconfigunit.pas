@@ -59,12 +59,14 @@ type
     TabSheet4: TTabSheet;
     TabSheet5: TTabSheet;
     procedure FormCreate(Sender: TObject);
+    procedure host_gridKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
     procedure subnet_addupdate_buttonClick(Sender: TObject);
     procedure subnet_domainnameservers_editKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
     procedure subnet_domainnameservers_gridClick(Sender: TObject);
     procedure subnet_domainnameservers_gridKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
     procedure subnet_gridClick(Sender: TObject);
     procedure subnet_gridColRowInserted(Sender: TObject; IsColumn: boolean; sIndex, tIndex: integer);
+    procedure subnet_gridKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
     procedure subnet_routers_editKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
     procedure subnet_routers_gridClick(Sender: TObject);
     procedure subnet_routers_gridKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
@@ -91,8 +93,8 @@ procedure Tdhcpconfigform.subnet_domainnameservers_editKeyDown(Sender: TObject; 
 begin
   if Key = vk_return then
   begin
-    if (subnet_domainnameservers_edit.Text <> '') and (DTValidIP(subnet_domainnameservers_edit.Text) or DTValidIP6(subnet_domainnameservers_edit.Text) or
-      DTValidURI(subnet_domainnameservers_edit.Text)) then
+    if (subnet_domainnameservers_edit.Text <> '') and (DTValidIP(subnet_domainnameservers_edit.Text) or
+      DTValidIP6(subnet_domainnameservers_edit.Text) or DTValidURI(subnet_domainnameservers_edit.Text)) then
     begin
       if sgFindItemRowInColumn(subnet_domainnameservers_grid, 0, subnet_domainnameservers_edit.Text) < 0 then
       begin
@@ -149,6 +151,13 @@ end;
 procedure Tdhcpconfigform.subnet_gridColRowInserted(Sender: TObject; IsColumn: boolean; sIndex, tIndex: integer);
 begin
   loadSubnets;
+end;
+
+procedure Tdhcpconfigform.subnet_gridKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
+begin
+  if key = VK_DELETE then
+    if subnet_grid.Row > 0 then
+      subnet_grid.DeleteRow(subnet_grid.Row);
 end;
 
 procedure Tdhcpconfigform.subnet_routers_editKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
@@ -215,6 +224,13 @@ begin
     subnet_grid.LoadFromCSVFile('tempsubnets.csv', ',', False, 0, True);
     loadSubnets;
   end;
+end;
+
+procedure Tdhcpconfigform.host_gridKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
+begin
+  if key = VK_DELETE then
+    if host_grid.Row > 0 then
+      host_grid.DeleteRow(host_grid.Row);
 end;
 
 procedure Tdhcpconfigform.saveTemp;
