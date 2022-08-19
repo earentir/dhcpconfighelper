@@ -224,6 +224,8 @@ begin
     subnet_grid.LoadFromCSVFile('tempsubnets.csv', ',', False, 0, True);
     loadSubnets;
   end;
+
+  PageControl1.ActivePageIndex := 0;
 end;
 
 procedure Tdhcpconfigform.host_gridKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
