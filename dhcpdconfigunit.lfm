@@ -8,37 +8,35 @@ object dhcpconfigform: Tdhcpconfigform
   ClientHeight = 600
   ClientWidth = 800
   OnCreate = FormCreate
-  object Panel1: TPanel
+  object StatusBar1: TStatusBar
     Left = 0
-    Height = 25
-    Top = 0
+    Height = 23
+    Top = 577
     Width = 800
-    Align = alTop
-    BevelOuter = bvNone
-    TabOrder = 0
+    Panels = <>
   end
   object Panel2: TPanel
     Left = 0
-    Height = 552
-    Top = 25
+    Height = 577
+    Top = 0
     Width = 800
     Align = alClient
     BevelOuter = bvNone
-    ClientHeight = 552
+    ClientHeight = 577
     ClientWidth = 800
     TabOrder = 1
     object PageControl1: TPageControl
       Left = 0
-      Height = 552
+      Height = 577
       Top = 0
       Width = 800
-      ActivePage = TabSheet3
+      ActivePage = TabSheet2
       Align = alClient
-      TabIndex = 2
+      TabIndex = 1
       TabOrder = 0
       object TabSheet1: TTabSheet
         Caption = 'Defaults'
-        ClientHeight = 524
+        ClientHeight = 549
         ClientWidth = 792
         object LabeledEdit1: TLabeledEdit
           Left = 8
@@ -67,12 +65,12 @@ object dhcpconfigform: Tdhcpconfigform
       end
       object TabSheet2: TTabSheet
         Caption = 'Subnets'
-        ClientHeight = 524
+        ClientHeight = 549
         ClientWidth = 792
         object Panel3: TPanel
           Left = 0
           Height = 150
-          Top = 374
+          Top = 399
           Width = 792
           Align = alBottom
           BevelOuter = bvSpace
@@ -181,134 +179,23 @@ object dhcpconfigform: Tdhcpconfigform
         end
         object Panel4: TPanel
           Left = 0
-          Height = 374
+          Height = 399
           Top = 0
           Width = 792
           Align = alClient
           BevelOuter = bvNone
-          ClientHeight = 374
+          ClientHeight = 399
           ClientWidth = 792
           TabOrder = 1
-          object subnet_subnet_edit: TLabeledEdit
-            Left = 8
-            Height = 23
-            Top = 72
-            Width = 125
-            EditLabel.Height = 15
-            EditLabel.Width = 125
-            EditLabel.Caption = 'subnet'
-            EditLabel.ParentColor = False
-            TabOrder = 1
-          end
-          object subnet_netmask_edit: TLabeledEdit
-            Left = 144
-            Height = 23
-            Top = 72
-            Width = 125
-            EditLabel.Height = 15
-            EditLabel.Width = 125
-            EditLabel.Caption = 'netmask'
-            EditLabel.ParentColor = False
-            TabOrder = 2
-          end
-          object subnet_rangea_edit: TLabeledEdit
-            Left = 8
-            Height = 23
-            Top = 120
-            Width = 125
-            EditLabel.Height = 15
-            EditLabel.Width = 125
-            EditLabel.Caption = 'range'
-            EditLabel.ParentColor = False
-            TabOrder = 6
-          end
-          object subnet_rangeb_edit: TEdit
-            Left = 144
-            Height = 23
-            Top = 120
-            Width = 125
-            TabOrder = 7
-          end
-          object subnet_addupdate_button: TButton
-            Left = 670
-            Height = 25
-            Top = 171
-            Width = 116
-            Caption = 'Add/Update'
-            OnClick = subnet_addupdate_buttonClick
-            TabOrder = 11
-          end
-          object subnet_range_bootpa_edit: TLabeledEdit
-            Left = 280
-            Height = 23
-            Top = 120
-            Width = 125
-            EditLabel.Height = 15
-            EditLabel.Width = 125
-            EditLabel.Caption = 'range-dynamic-bootp'
-            EditLabel.ParentColor = False
-            TabOrder = 8
-          end
-          object subnet_range_bootpb_edit: TEdit
-            Left = 432
-            Height = 23
-            Top = 120
-            Width = 125
-            TabOrder = 9
-          end
-          object subnet_domainname_edit: TLabeledEdit
-            Left = 8
-            Height = 23
-            Top = 171
-            Width = 549
-            EditLabel.Height = 15
-            EditLabel.Width = 549
-            EditLabel.Caption = 'domain-name'
-            EditLabel.ParentColor = False
-            TabOrder = 10
-          end
-          object subnet_broadcast_edit: TLabeledEdit
-            Left = 280
-            Height = 23
-            Top = 72
-            Width = 125
-            EditLabel.Height = 15
-            EditLabel.Width = 125
-            EditLabel.Caption = 'broadcast-address'
-            EditLabel.ParentColor = False
-            TabOrder = 3
-          end
-          object subnet_defaultleasetime_edit: TLabeledEdit
-            Left = 432
-            Height = 23
-            Top = 72
-            Width = 125
-            EditLabel.Height = 15
-            EditLabel.Width = 125
-            EditLabel.Caption = 'default-lease-time'
-            EditLabel.ParentColor = False
-            TabOrder = 4
-          end
-          object subnet_maxleasetime_edit: TLabeledEdit
-            Left = 568
-            Height = 23
-            Top = 72
-            Width = 125
-            EditLabel.Height = 15
-            EditLabel.Width = 125
-            EditLabel.Caption = 'max-lease-time'
-            EditLabel.ParentColor = False
-            TabOrder = 5
-          end
           object PageControl2: TPageControl
             Left = 0
             Height = 160
-            Top = 214
+            Top = 239
             Width = 792
             ActivePage = TabSheet4
             Align = alBottom
             TabIndex = 0
-            TabOrder = 12
+            TabOrder = 0
             object TabSheet4: TTabSheet
               Caption = 'domain-name-servers'
               ClientHeight = 132
@@ -400,22 +287,161 @@ object dhcpconfigform: Tdhcpconfigform
               end
             end
           end
-          object subnet_comment_edit: TLabeledEdit
-            Left = 8
-            Height = 23
-            Top = 24
-            Width = 685
-            EditLabel.Height = 15
-            EditLabel.Width = 685
-            EditLabel.Caption = 'comment'
-            EditLabel.ParentColor = False
-            TabOrder = 0
+          object ToolBar1: TToolBar
+            Left = 0
+            Height = 34
+            Top = 0
+            Width = 792
+            ButtonHeight = 32
+            ButtonWidth = 32
+            Caption = 'ToolBar1'
+            Images = ImageListToolbar
+            TabOrder = 1
+            Transparent = True
+            object ToolButton1: TToolButton
+              Left = 1
+              Top = 2
+              Caption = 'ToolButton1'
+              ImageIndex = 0
+            end
+          end
+          object Panel1: TPanel
+            Left = 0
+            Height = 205
+            Top = 34
+            Width = 792
+            Align = alClient
+            BevelOuter = bvNone
+            ClientHeight = 205
+            ClientWidth = 792
+            TabOrder = 2
+            object subnet_comment_edit: TLabeledEdit
+              Left = 8
+              Height = 23
+              Top = 24
+              Width = 685
+              EditLabel.Height = 15
+              EditLabel.Width = 685
+              EditLabel.Caption = 'comment'
+              EditLabel.ParentColor = False
+              TabOrder = 0
+            end
+            object subnet_subnet_edit: TLabeledEdit
+              Left = 8
+              Height = 23
+              Top = 72
+              Width = 125
+              EditLabel.Height = 15
+              EditLabel.Width = 125
+              EditLabel.Caption = 'subnet'
+              EditLabel.ParentColor = False
+              TabOrder = 1
+            end
+            object subnet_netmask_edit: TLabeledEdit
+              Left = 144
+              Height = 23
+              Top = 72
+              Width = 125
+              EditLabel.Height = 15
+              EditLabel.Width = 125
+              EditLabel.Caption = 'netmask'
+              EditLabel.ParentColor = False
+              TabOrder = 2
+            end
+            object subnet_broadcast_edit: TLabeledEdit
+              Left = 280
+              Height = 23
+              Top = 72
+              Width = 125
+              EditLabel.Height = 15
+              EditLabel.Width = 125
+              EditLabel.Caption = 'broadcast-address'
+              EditLabel.ParentColor = False
+              TabOrder = 3
+            end
+            object subnet_defaultleasetime_edit: TLabeledEdit
+              Left = 432
+              Height = 23
+              Top = 72
+              Width = 125
+              EditLabel.Height = 15
+              EditLabel.Width = 125
+              EditLabel.Caption = 'default-lease-time'
+              EditLabel.ParentColor = False
+              TabOrder = 4
+            end
+            object subnet_maxleasetime_edit: TLabeledEdit
+              Left = 568
+              Height = 23
+              Top = 72
+              Width = 125
+              EditLabel.Height = 15
+              EditLabel.Width = 125
+              EditLabel.Caption = 'max-lease-time'
+              EditLabel.ParentColor = False
+              TabOrder = 5
+            end
+            object subnet_range_bootpb_edit: TEdit
+              Left = 432
+              Height = 23
+              Top = 120
+              Width = 125
+              TabOrder = 6
+            end
+            object subnet_range_bootpa_edit: TLabeledEdit
+              Left = 280
+              Height = 23
+              Top = 120
+              Width = 125
+              EditLabel.Height = 15
+              EditLabel.Width = 125
+              EditLabel.Caption = 'range-dynamic-bootp'
+              EditLabel.ParentColor = False
+              TabOrder = 7
+            end
+            object subnet_rangeb_edit: TEdit
+              Left = 144
+              Height = 23
+              Top = 120
+              Width = 125
+              TabOrder = 8
+            end
+            object subnet_rangea_edit: TLabeledEdit
+              Left = 8
+              Height = 23
+              Top = 120
+              Width = 125
+              EditLabel.Height = 15
+              EditLabel.Width = 125
+              EditLabel.Caption = 'range'
+              EditLabel.ParentColor = False
+              TabOrder = 9
+            end
+            object subnet_domainname_edit: TLabeledEdit
+              Left = 8
+              Height = 23
+              Top = 171
+              Width = 549
+              EditLabel.Height = 15
+              EditLabel.Width = 549
+              EditLabel.Caption = 'domain-name'
+              EditLabel.ParentColor = False
+              TabOrder = 10
+            end
+            object subnet_addupdate_button1: TButton
+              Left = 664
+              Height = 25
+              Top = 136
+              Width = 116
+              Caption = 'Add/Update'
+              TabOrder = 11
+            end
           end
         end
       end
       object TabSheet3: TTabSheet
         Caption = 'Hosts'
-        ClientHeight = 524
+        ClientHeight = 549
         ClientWidth = 792
         object subnetlist_combobox: TComboBox
           Left = 0
@@ -431,11 +457,11 @@ object dhcpconfigform: Tdhcpconfigform
         end
         object Panel5: TPanel
           Left = 0
-          Height = 501
+          Height = 526
           Top = 23
           Width = 792
           Align = alClient
-          ClientHeight = 501
+          ClientHeight = 526
           ClientWidth = 792
           TabOrder = 1
           object host_comment_edit: TLabeledEdit
@@ -507,7 +533,7 @@ object dhcpconfigform: Tdhcpconfigform
           object Panel6: TPanel
             Left = 1
             Height = 300
-            Top = 200
+            Top = 225
             Width = 790
             Align = alBottom
             ClientHeight = 300
@@ -529,23 +555,23 @@ object dhcpconfigform: Tdhcpconfigform
                 end              
                 item
                   Title.Caption = 'hostname'
-                  Width = 157
+                  Width = 154
                 end              
                 item
                   Title.Caption = 'hardware'
-                  Width = 157
+                  Width = 154
                 end              
                 item
                   Title.Caption = 'fixed-address'
-                  Width = 157
+                  Width = 154
                 end              
                 item
                   Title.Caption = 'filename'
-                  Width = 157
+                  Width = 154
                 end              
                 item
                   Title.Caption = 'server-name'
-                  Width = 160
+                  Width = 155
                 end>
               DefaultColWidth = 100
               FixedCols = 0
@@ -556,31 +582,35 @@ object dhcpconfigform: Tdhcpconfigform
               OnKeyDown = host_gridKeyDown
               ColWidths = (
                 0
-                157
-                157
-                157
-                157
-                160
+                154
+                154
+                154
+                154
+                155
               )
             end
-          end
-          object subnet_addupdate_button1: TButton
-            Left = 670
-            Height = 25
-            Top = 148
-            Width = 116
-            Caption = 'Add/Update'
-            TabOrder = 7
           end
         end
       end
     end
   end
-  object StatusBar1: TStatusBar
-    Left = 0
-    Height = 23
-    Top = 577
-    Width = 800
-    Panels = <>
+  object ImageListToolbar: TImageList
+    Height = 32
+    Width = 32
+    Left = 736
+    Top = 16
+    Bitmap = {
+      4C7A0100000020000000200000003F0100000000000078DAED96494A43411086
+      9FA2E8111C13E305046F12C5E01D2206170603DE44178A22BA73D8385C247B87
+      ADD3C231EAD7F037345998B61E8910FA876F115E57FEEA7EF5BA2ACB9292A255
+      82065CC11D7CC01BDCC005D461BA0BBE453880167C77E013F6DBF2F0CF2C5A86
+      67C5BFC02E94A1004330A273A9C091CEC4AD7D84A59CFEB520F6102622DFD199
+      62BE60C5E8BFA87847D5907B23C8E1AFFEE370AF985A8EBAD96CAB8D586D6BFD
+      B1C1F3B7DA8CD130345547A57FF0771A80B974DD2525F585E661B0C77788D7AC
+      EEB2A6EEB65EFB9F2A6ECBB8FFF51CE7BEA6FF70BD6CCCE0EF7B67DDE0BD1AF4
+      EFB2B18754831C4E60262276527350387F587B989F431EF4FB5D735045BD7154
+      35E5E6C305D88357AD7DD2BA2CA7BFDFD38E66CB4EF3674B3916BAF01D4FA91E
+      CFE15A7B7567720B97B0A1B3484A8AD20F30F28CDE
+    }
   end
 end
