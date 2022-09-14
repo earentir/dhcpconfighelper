@@ -24,8 +24,8 @@ type
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
-    LabeledEdit1: TLabeledEdit;
-    LabeledEdit2: TLabeledEdit;
+    defaultleasetime_edit: TLabeledEdit;
+    defaultmaxleasetime_edit: TLabeledEdit;
     PageControl1: TPageControl;
     PageControl2: TPageControl;
     Panel1: TPanel;
@@ -58,10 +58,19 @@ type
     TabSheet3: TTabSheet;
     TabSheet4: TTabSheet;
     TabSheet5: TTabSheet;
-    ToolBar1: TToolBar;
+    ToolBar2: TToolBar;
     ToolButton1: TToolButton;
+    ToolButton10: TToolButton;
+    ToolButton2: TToolButton;
+    ToolButton3: TToolButton;
+    ToolButton4: TToolButton;
+    ToolButton6: TToolButton;
+    ToolButton7: TToolButton;
+    ToolButton8: TToolButton;
+    ToolButton9: TToolButton;
     procedure FormCreate(Sender: TObject);
     procedure host_gridKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
+    procedure PageControl1Change(Sender: TObject);
     procedure subnet_addupdate_buttonClick(Sender: TObject);
     procedure subnet_domainnameservers_editKeyDown(Sender: TObject; var Key: word; Shift: TShiftState);
     procedure subnet_domainnameservers_gridClick(Sender: TObject);
@@ -235,6 +244,17 @@ begin
   if key = VK_DELETE then
     if host_grid.Row > 0 then
       host_grid.DeleteRow(host_grid.Row);
+end;
+
+procedure Tdhcpconfigform.PageControl1Change(Sender: TObject);
+begin
+  if PageControl1.ActivePage.Caption = 'Subnets' then
+  begin
+    if subnet_defaultleasetime_edit.Text = '' then
+      subnet_defaultleasetime_edit.Text := defaultleasetime_edit.Text;
+    if subnet_maxleasetime_edit.Text = '' then
+      subnet_maxleasetime_edit.Text := defaultmaxleasetime_edit.Text;
+  end;
 end;
 
 procedure Tdhcpconfigform.saveTemp;

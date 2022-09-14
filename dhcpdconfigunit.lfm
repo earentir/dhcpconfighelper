@@ -17,28 +17,29 @@ object dhcpconfigform: Tdhcpconfigform
   end
   object Panel2: TPanel
     Left = 0
-    Height = 577
-    Top = 0
+    Height = 543
+    Top = 34
     Width = 800
     Align = alClient
     BevelOuter = bvNone
-    ClientHeight = 577
+    ClientHeight = 543
     ClientWidth = 800
     TabOrder = 1
     object PageControl1: TPageControl
       Left = 0
-      Height = 577
+      Height = 543
       Top = 0
       Width = 800
-      ActivePage = TabSheet2
+      ActivePage = TabSheet1
       Align = alClient
-      TabIndex = 1
+      TabIndex = 0
       TabOrder = 0
+      OnChange = PageControl1Change
       object TabSheet1: TTabSheet
         Caption = 'Defaults'
-        ClientHeight = 549
+        ClientHeight = 515
         ClientWidth = 792
-        object LabeledEdit1: TLabeledEdit
+        object defaultleasetime_edit: TLabeledEdit
           Left = 8
           Height = 23
           Top = 32
@@ -50,7 +51,7 @@ object dhcpconfigform: Tdhcpconfigform
           TabOrder = 0
           Text = '600'
         end
-        object LabeledEdit2: TLabeledEdit
+        object defaultmaxleasetime_edit: TLabeledEdit
           Left = 8
           Height = 23
           Top = 88
@@ -65,12 +66,12 @@ object dhcpconfigform: Tdhcpconfigform
       end
       object TabSheet2: TTabSheet
         Caption = 'Subnets'
-        ClientHeight = 549
+        ClientHeight = 515
         ClientWidth = 792
         object Panel3: TPanel
           Left = 0
           Height = 150
-          Top = 399
+          Top = 365
           Width = 792
           Align = alBottom
           BevelOuter = bvSpace
@@ -179,18 +180,18 @@ object dhcpconfigform: Tdhcpconfigform
         end
         object Panel4: TPanel
           Left = 0
-          Height = 399
+          Height = 365
           Top = 0
           Width = 792
           Align = alClient
           BevelOuter = bvNone
-          ClientHeight = 399
+          ClientHeight = 365
           ClientWidth = 792
           TabOrder = 1
           object PageControl2: TPageControl
             Left = 0
             Height = 160
-            Top = 239
+            Top = 205
             Width = 792
             ActivePage = TabSheet4
             Align = alBottom
@@ -287,34 +288,16 @@ object dhcpconfigform: Tdhcpconfigform
               end
             end
           end
-          object ToolBar1: TToolBar
-            Left = 0
-            Height = 34
-            Top = 0
-            Width = 792
-            ButtonHeight = 32
-            ButtonWidth = 32
-            Caption = 'ToolBar1'
-            Images = ImageListToolbar
-            TabOrder = 1
-            Transparent = True
-            object ToolButton1: TToolButton
-              Left = 1
-              Top = 2
-              Caption = 'ToolButton1'
-              ImageIndex = 0
-            end
-          end
           object Panel1: TPanel
             Left = 0
             Height = 205
-            Top = 34
+            Top = 0
             Width = 792
             Align = alClient
             BevelOuter = bvNone
             ClientHeight = 205
             ClientWidth = 792
-            TabOrder = 2
+            TabOrder = 1
             object subnet_comment_edit: TLabeledEdit
               Left = 8
               Height = 23
@@ -441,7 +424,7 @@ object dhcpconfigform: Tdhcpconfigform
       end
       object TabSheet3: TTabSheet
         Caption = 'Hosts'
-        ClientHeight = 549
+        ClientHeight = 515
         ClientWidth = 792
         object subnetlist_combobox: TComboBox
           Left = 0
@@ -457,11 +440,11 @@ object dhcpconfigform: Tdhcpconfigform
         end
         object Panel5: TPanel
           Left = 0
-          Height = 526
+          Height = 492
           Top = 23
           Width = 792
           Align = alClient
-          ClientHeight = 526
+          ClientHeight = 492
           ClientWidth = 792
           TabOrder = 1
           object host_comment_edit: TLabeledEdit
@@ -533,7 +516,7 @@ object dhcpconfigform: Tdhcpconfigform
           object Panel6: TPanel
             Left = 1
             Height = 300
-            Top = 225
+            Top = 191
             Width = 790
             Align = alBottom
             ClientHeight = 300
@@ -555,23 +538,23 @@ object dhcpconfigform: Tdhcpconfigform
                 end              
                 item
                   Title.Caption = 'hostname'
-                  Width = 154
+                  Width = 157
                 end              
                 item
                   Title.Caption = 'hardware'
-                  Width = 154
+                  Width = 157
                 end              
                 item
                   Title.Caption = 'fixed-address'
-                  Width = 154
+                  Width = 157
                 end              
                 item
                   Title.Caption = 'filename'
-                  Width = 154
+                  Width = 157
                 end              
                 item
                   Title.Caption = 'server-name'
-                  Width = 155
+                  Width = 160
                 end>
               DefaultColWidth = 100
               FixedCols = 0
@@ -582,11 +565,11 @@ object dhcpconfigform: Tdhcpconfigform
               OnKeyDown = host_gridKeyDown
               ColWidths = (
                 0
-                154
-                154
-                154
-                154
-                155
+                157
+                157
+                157
+                157
+                160
               )
             end
           end
@@ -594,23 +577,106 @@ object dhcpconfigform: Tdhcpconfigform
       end
     end
   end
+  object ToolBar2: TToolBar
+    Left = 0
+    Height = 34
+    Top = 0
+    Width = 800
+    ButtonHeight = 32
+    ButtonWidth = 32
+    Caption = 'ToolBar2'
+    Images = ImageListToolbar
+    TabOrder = 2
+    Transparent = True
+    object ToolButton6: TToolButton
+      Left = 1
+      Top = 2
+      Caption = 'Refresh'
+      ImageIndex = 0
+    end
+    object ToolButton7: TToolButton
+      Left = 69
+      Top = 2
+      Caption = 'Add'
+      ImageIndex = 1
+    end
+    object ToolButton8: TToolButton
+      Left = 151
+      Top = 2
+      Caption = 'Delete'
+      ImageIndex = 3
+    end
+    object ToolButton9: TToolButton
+      Left = 37
+      Top = 2
+      Caption = 'ToolButton4'
+      Enabled = False
+    end
+    object ToolButton10: TToolButton
+      Left = 110
+      Top = 2
+      Caption = 'ToolButton5'
+      ImageIndex = 2
+    end
+    object ToolButton1: TToolButton
+      Left = 105
+      Height = 32
+      Top = 2
+      Caption = 'ToolButton1'
+      Style = tbsDivider
+    end
+    object ToolButton2: TToolButton
+      Left = 146
+      Height = 32
+      Top = 2
+      Caption = 'ToolButton2'
+      Style = tbsDivider
+    end
+    object ToolButton3: TToolButton
+      Left = 187
+      Top = 2
+      Caption = 'ToolButton3'
+      Enabled = False
+    end
+    object ToolButton4: TToolButton
+      Left = 219
+      Top = 2
+      Caption = 'ToolButton4'
+      ImageIndex = 4
+    end
+  end
   object ImageListToolbar: TImageList
     Height = 32
     Width = 32
-    Left = 736
-    Top = 16
+    Left = 536
     Bitmap = {
-      4C7A0100000020000000200000003F0100000000000078DAED96494A43411086
-      9FA2E8111C13E305046F12C5E01D2206170603DE44178A22BA73D8385C247B87
-      ADD3C231EAD7F037345998B61E8910FA876F115E57FEEA7EF5BA2ACB9292A255
-      82065CC11D7CC01BDCC005D461BA0BBE453880167C77E013F6DBF2F0CF2C5A86
-      67C5BFC02E94A1004330A273A9C091CEC4AD7D84A59CFEB520F6102622DFD199
-      62BE60C5E8BFA87847D5907B23C8E1AFFEE370AF985A8EBAD96CAB8D586D6BFD
-      B1C1F3B7DA8CD130345547A57FF0771A80B974DD2525F585E661B0C77788D7AC
-      EEB2A6EEB65EFB9F2A6ECBB8FFF51CE7BEA6FF70BD6CCCE0EF7B67DDE0BD1AF4
-      EFB2B18754831C4E60262276527350387F587B989F431EF4FB5D735045BD7154
-      35E5E6C305D88357AD7DD2BA2CA7BFDFD38E66CB4EF3674B3916BAF01D4FA91E
-      CFE15A7B7567720B97B0A1B3484A8AD20F30F28CDE
+      4C7A0500000020000000200000003A0300000000000078DAED5C4D6B1351144D
+      45936CDCFB59ADE8A6290AE94EFF81D0452B16FF43C5E2C262417F4223545B17
+      BA502AA2E0A2D58D5670A3BF40B4646BFDDC18AB82891F4D3C0FCEC37118266F
+      DEBC99C9A4F7C08166E6BD396FEEBDF3EEBDD3B4858240608C2170167C0A7E00
+      7F833FC177E0137006DC9F80EE01F02EB80976BAF00F78C7B70E7DCE0667C0EF
+      9CDF046F83E3E020B81D2CD12E93E07DDA448DFD0A9E8EA93FED997B0FDC63E8
+      A3479CD306CF5AEA9FE27CC5298BB5CF7AD610557F37F88573A663C4CD255F6C
+      98E226C72F5B6886C5A609768075C6D15006FA0A03E031D9EE0482BE4015DC96
+      F21EA271887B599D7B5BDAFA0F39EF86E5FD5F8861F7F3BC86CA65BB2CF475EE
+      9CB1D03EE7C9DFE3963964CAB38615F0A0C1DCBDAC83BCF5876D0ED375C8063F
+      FF621D34C9DC58664CA9FA70025C025B1CFB8DE30A31F5F53DDD626DD9ADFEDC
+      E41A0713788EF7311E1F836F79AFCA26EFC155F0226D2110080479442761E645
+      3F29BBE6455FFCBFB5FDDF4BFAFE6336BECEB37E141C0517D9EFA977C33FC097
+      29E8AB5EE07AE1FFF78D419C078B09DA5FBD239E63CF5DE2BAAA3CD6E498D590
+      35C4D17F030E87DC5B055CE7D86B8EEC3FCC9EA719A01D74AD0AC72A3F8D38D0
+      9FE7F8B908D7AA85D820AAFE1AC757235C6B94C7D71CE8EB982A1BEE0DFA59D1
+      B19AA57ECB61FEB5B17FDDA1BE4DFC2D38C86BDEE7AF62A03F42BBB7B957BB80
+      7E06D703D6E0D7D6FBCFA2C3DC5EE29EAA63BA461F97C9511ED3EF869E79E2D5
+      158AB443D8EF28DBCC51AEB5FD36BE0ABE66EE6D31CE171CFA5B2090FE5FFA3F
+      E9FFC5FFD2FF4BFF9F07FFC759A7A9FD7B51FF85E7FCF314EC1F773FCCBB7E5A
+      CF499C6B849DEF15FD38B935CFFA69C490E827ABFFC920563E26A83FC6EB8769
+      8F49AB2990FE5FFA3FE9FFC5FFA22FFDBFF4FFCEFA6FD7FD67D6FA49F85AF445
+      BFE328FFF6937ED2B5733FEB3778CDE301E73E7BCE9DE0CF0DC7FA5722C64DCD
+      B17E916B6874D16D50BB28EDA640904ADF679A33B2D6CFA2BECEABBECB3979D4
+      17FF6F6DFF8BBEE8CBFED75FFA61B5C261F05506F58FC24983BEC6E57B78EF9A
+      2E17FEFD5DD10370670635A9FA5EB9FA7F460319D4C41BB47F1635B9FA1EFB91
+      8C7A82E5147D1D84C47DFD17F378EEA1
     }
   end
 end
